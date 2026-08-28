@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Large original image assets.
+# Only the optimized `web/` copies (and the few root assets used by the site)
+# are tracked. Everything else under assets/ is a multi-hundred-MB original
+# that must stay out of the repo.
+assets/**
+!assets/**/
+!assets/**/web/**
+!assets/webdev/**
+!assets/minesweeper/**
+!assets/BB25-web.jpg

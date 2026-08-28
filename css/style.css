@@ -107,6 +107,12 @@ main {
   aspect-ratio: 3 / 4;
   overflow: hidden;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.hero-portrait:hover {
+  opacity: 0.85;
 }
 
 .hero-portrait img {
