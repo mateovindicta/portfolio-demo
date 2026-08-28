@@ -160,3 +160,29 @@ document.querySelectorAll(".slider-wrap").forEach((wrap) => {
     });
   }
 });
+
+const themeToggle = document.querySelector(".theme-toggle");
+
+if (themeToggle) {
+  const root = document.documentElement;
+
+  const sync = () => {
+    themeToggle.textContent = root.dataset.theme === "dark" ? "Light" : "Dark";
+  };
+  sync();
+
+  themeToggle.addEventListener("click", () => {
+    if (root.dataset.theme === "dark") {
+      delete root.dataset.theme;
+      try {
+        localStorage.setItem("theme", "light");
+      } catch (e) {}
+    } else {
+      root.dataset.theme = "dark";
+      try {
+        localStorage.setItem("theme", "dark");
+      } catch (e) {}
+    }
+    sync();
+  });
+}

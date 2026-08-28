@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    try {
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.dataset.theme = "dark";
+      }
+    } catch (e) {}
+  </script>
   <title>Mateo Carvajal — Portfolio</title>
   <meta name="description" content="Portfolio of Mateo, designer and artist.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +24,7 @@
     <nav class="site-nav">
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
     </nav>
   </header>
 
