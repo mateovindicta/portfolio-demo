@@ -115,6 +115,13 @@ main {
   color: var(--muted);
   cursor: pointer;
   transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-toggle svg {
+  display: block;
 }
 
 .theme-toggle:hover {
