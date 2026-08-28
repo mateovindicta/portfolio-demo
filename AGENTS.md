@@ -29,6 +29,8 @@ Static portfolio website for Mateo Carvajal (designer/artist, Caracas). No build
 - `MINE.png` — mine icon. `face-happy.png` / `face-dead.png` / `face-cool.png` — the reset button, swapped on idle / loss / win respectively. All are swappable custom assets, referenced by those exact filenames.
 
 ## Repo hygiene
+- Commit on each batch of changes (one logical commit per batch). Stage only the files involved in that batch.
+- After committing, always ask before pushing.
 - Git is initialized (`main`); current staged/unstaged state was in flux (large image originals may bloat the repo). Don't commit unless asked.
 - `.gitattributes`: `* text=auto` (LF normalization).
 - `opencode.json.txt` is an empty placeholder file — not active config.
