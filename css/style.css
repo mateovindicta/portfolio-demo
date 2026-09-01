@@ -244,6 +244,17 @@ main {
   animation: fadeDown 0.3s ease;
 }
 
+.index-item--featured {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.index-item--featured .index-link {
+  font-weight: 700;
+  color: #c0392b;
+}
+
 .index-projects li a {
   display: inline-block;
   padding: 6px 0;
@@ -675,6 +686,52 @@ main {
   transform: none;
 }
 
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mosaic-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mosaic-img {
+  aspect-ratio: 1 / 1;
+  background: var(--media-bg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.mosaic-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mosaic-item:hover .mosaic-img img {
+  transform: scale(1.04);
+}
+
+.mosaic-info {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.mosaic-num {
+  font-weight: 600;
+  color: var(--text);
+  margin-right: 6px;
+}
+
+.mosaic-name {
+  text-transform: uppercase;
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 90px 0 70px;
@@ -699,5 +756,10 @@ main {
 
   .slider-wrap {
     max-width: none;
+  }
+
+  .mosaic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
