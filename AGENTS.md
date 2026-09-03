@@ -18,7 +18,7 @@ Static portfolio website for Mateo Carvajal (designer/artist, Caracas). No build
 ## Graphics For Sale mosaic updates (`projects/graphics-for-sale.html`)
 When the user says they uploaded new photos to `assets/graphics-for-sale/` (the `* MOCKUP.png` originals there):
 1. The page shows a `.mosaic-grid` of numbered squares (`001.`, `002.`, …). Each `<div class="mosaic-item">` references `web/NNN.jpg` and panics if the file is missing — **every thumbnail must resolve to an existing web file.**
-2. Resize only the newly-added originals into `assets/graphics-for-sale/web/` using the resize helper (fresh `powershell` process per-file, see above), numbering them to continue from the current highest number in the folder.
+2. Resize only the newly-added originals into `assets/graphics-for-sale/web/` using the resize helper (fresh `powershell` process per-file, see above), numbering them to continue from the current highest number in the folder. **This page is optimized extra-small: use `-maxEdge 800 -quality 70`** (not the default 1000/q85) so thumbnails load fast.
 3. **Newest items go at the TOP of the mosaic.** Add the new entries immediately after the `<section class="mosaic-grid reveal">` open tag, before the existing ones, keeping numbering sequential (newest highest number first, then descending). If a renumber of the whole set is needed (e.g. dropped/renamed files), shift all files down and update every entry so numbers stay contiguous with no gaps.
 4. When deleting an image, remove its `.mosaic-item` block **and** its web file **and** renumber the rest so the grid stays contiguous — never leave a dead reference.
 5. Always render `projects/graphics-for-sale.html` in headless Chrome and confirm the thumbnails actually load before committing.
