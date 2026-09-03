@@ -16,6 +16,7 @@ Static portfolio website for Mateo Carvajal (designer/artist, Caracas). No build
 - Keep originals in place; only the resized copies feed the site.
 
 ## Graphics For Sale mosaic updates (`projects/graphics-for-sale.html`)
+**Currently OFFLINE (hidden).** The accordion entry in `index.html` was removed for a pending relaunch; `projects/graphics-for-sale.html` and its `web/` assets remain in the repo. To bring it back online, re-add the `.index-item` "Graphics For Sale" block in `index.html` (see git history for the exact block) and commit.
 When the user says they uploaded new photos to `assets/graphics-for-sale/` (the `* MOCKUP.png` originals there):
 1. The page shows a `.mosaic-grid` of numbered squares (`001.`, `002.`, …). Each `<div class="mosaic-item">` references `web/NNN.jpg` and panics if the file is missing — **every thumbnail must resolve to an existing web file.**
 2. Resize only the newly-added originals into `assets/graphics-for-sale/web/` using the resize helper (fresh `powershell` process per-file, see above), numbering them to continue from the current highest number in the folder. **This page is optimized extra-small: use `-maxEdge 800 -quality 70`** (not the default 1000/q85) so thumbnails load fast.
