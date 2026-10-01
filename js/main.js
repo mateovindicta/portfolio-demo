@@ -98,17 +98,51 @@ if (
 ) {
   const lightbox = document.createElement("div");
   lightbox.className = "lightbox";
-  lightbox.innerHTML = '<img alt="">';
+  lightbox.innerHTML =
+    '<button class="lightbox-arrow lightbox-prev" type="button" data-dir="-1" aria-label="Previous image">&larr;</button>' +
+    '<img alt="">' +
+    '<button class="lightbox-arrow lightbox-next" type="button" data-dir="1" aria-label="Next image">&rarr;</button>';
   document.body.appendChild(lightbox);
   const lbImg = lightbox.querySelector("img");
 
+  let lbNav = null;
+
   const closeLightbox = () => lightbox.classList.remove("open");
+
+  const stepLightbox = (dir) => {
+    if (!lbNav) return;
+    const next = lbNav(dir);
+    if (next && next.src) {
+      lbImg.src = next.src;
+      lbImg.alt = next.alt;
+    }
+  };
+
   lightbox.addEventListener("click", closeLightbox);
+  lightbox.querySelectorAll(".lightbox-arrow").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      stepLightbox(Number(btn.dataset.dir));
+    });
+  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLightbox();
+    if (e.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+    if (!lightbox.classList.contains("open") || !lbNav) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      stepLightbox(-1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      stepLightbox(1);
+    }
   });
 
-  const openLightbox = (img) => {
+  const openLightbox = (img, nav) => {
+    lbNav = nav || null;
+    lightbox.classList.toggle("has-nav", Boolean(lbNav));
     lbImg.src = img.src;
     lbImg.alt = img.alt;
     lightbox.classList.add("open");
@@ -159,7 +193,12 @@ document.querySelectorAll(".slider-wrap").forEach((wrap) => {
   if (fsBtn && window.__openLightbox) {
     fsBtn.addEventListener("click", () => {
       const img = slides[index].querySelector("img");
-      if (img) window.__openLightbox(img);
+      if (img) {
+        window.__openLightbox(img, (dir) => {
+          show(index + dir);
+          return slides[index].querySelector("img");
+        });
+      }
     });
   }
 });
