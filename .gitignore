@@ -13,3 +13,5 @@ assets/**
 !assets/webdev/**
 !assets/minesweeper/**
 !assets/BB25-web.jpg
+!assets/favicon.png
+!assets/apple-touch-icon.png
